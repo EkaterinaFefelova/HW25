@@ -14,10 +14,7 @@ public class Main {
         };
 
         Predicate<Human> isFullAged = (Human human) -> {
-            if (human.getAge()>=18)
-                System.out.println("Это совершеннолетний человек");
-            else
-                System.out.println("Это несовершеннолетний человек");
+            System.out.println("Это " + (human.getAge()>=18 ? "совершеннолетний": "несовершеннолетний") + " человек");
             return human.getAge()>=18;
         };
 
@@ -26,8 +23,8 @@ public class Main {
 
 
         System.out.println(human1);
-        System.out.println(isFullAged.test(human1));
+        isFullAged.test(human1);
         System.out.println(human2);
-        System.out.println(isFullAged.test(human2));
+        isFullAged.test(human2);
     }
 }
