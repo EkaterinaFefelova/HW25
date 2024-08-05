@@ -13,7 +13,7 @@ public class Main {
             return new Human(name, age, height);
         };
 
-        Predicate<Human> isFullAged = (Human human) -> {
+        Predicate<Human> isFullAged = (human) -> {
             System.out.println("Это " + (human.getAge()>=18 ? "совершеннолетний": "несовершеннолетний") + " человек");
             return human.getAge()>=18;
         };
