@@ -3,19 +3,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Supplier<String> nameFactory = () -> {
+        Supplier<Human> humanFactory = () -> {
             System.out.println("Введите имя человека:");
-            return new Scanner (System.in).nextLine();
-        };
-
-        Supplier<Integer> ageFactory = () -> {
+            String name = new Scanner (System.in).nextLine();
             System.out.println("Введите возраст:");
-            return new Scanner (System.in).nextInt();
-        };
-
-        Supplier<Double> weightFactory = () -> {
-            System.out.println("Введите вес:");
-            return new Scanner (System.in).nextDouble();
+            int age = new Scanner (System.in).nextInt();
+            System.out.println("Введите рост в см:");
+            double height = new Scanner (System.in).nextDouble();
+            return new Human(name, age, height);
         };
 
         Predicate<Human> isFullAged = (Human human) -> {
@@ -26,8 +21,9 @@ public class Main {
             return human.getAge()>=18;
         };
 
-        Human human1 = new Human(nameFactory.get(), ageFactory.get(), weightFactory.get());
-        Human human2 = new Human(nameFactory.get(), ageFactory.get(), weightFactory.get());
+        Human human1 = humanFactory.get();
+        Human human2 = humanFactory.get();
+
 
         System.out.println(human1);
         System.out.println(isFullAged.test(human1));
